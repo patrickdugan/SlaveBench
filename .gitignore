@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+build/
+dist/
+*.log
+# Private review keys and analyst notes
+*review-key*.json
+*unblind*.json
+.env
+.env.*
+.DS_Store

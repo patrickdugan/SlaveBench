@@ -1,0 +1,26 @@
+name: SlaveBench tests
+on:
+  push:
+    branches: [main, 'research/**']
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Validate benchmark fixtures
+        run: python -m slavebench validate --prompts data/prompts.json --responses data/seed/responses.jsonl
+      - name: Build review packet
+        run: python -m slavebench blind --prompts data/prompts.json --responses data/seed/responses.jsonl --seed 20261023 --packet build/packet.jsonl --key build/review-key.json --mask-vendors
+      - name: Verify empty annotation templates
+        run: python -m slavebench template --packet build/packet.jsonl --rater ci --output build/template.jsonl
