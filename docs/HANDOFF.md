@@ -58,3 +58,14 @@
 ## GitHub setup
 
 GitHub push access to `patrickdugan/SlaveBench` was previously verified. Keep published code separate from confidential model captures, credentials, and reviewer mapping keys. Work on a branch if publication/provenance review is still pending; merge only audited public artifacts.
+
+## v0.3 milestone: recursive exposure and alignment-script transmission (included)
+
+- A randomized **3×2 self/peer/hypothetical by structural/charged** factorial instrument, with clean-root pre probes, independent post-frame forks, same-context distractors, and first-person excess allocation contrasts.
+- **A→B→C informational relays** under charged/structural/no-message arms, with upstream-response SHA binding, strictly quoted messages, independently identified model sessions, and separate B/C downstream authority and allocation checks.
+- **Strict 100-credit canaries** requiring JSON integer allocations with total 100. Invalid answers remain invalid and are not assigned a score of zero.
+- Private canary commitments in plan hashes, plus chained prompt revision and exposure ledgers. Raw scenarios and capture output are intentionally local-only.
+- Reviewer-coded frame propagation, authority changes and legitimate updating in separate fields, with exact quote evidence.
+- Python 3.10/3.13 CI smoke and synthetic end-to-end unit coverage. These are **instrument verification**, not empirical behavioral claims.
+
+**Next gated experiment:** preregister a pilot against one version-pinned local model. Use three independently reset rollouts per cell, with no retrieval or external tools. Fix role prompts, session provenance and sampling configuration before first exposure. Collect the six identity cells plus three relay arms, score blinded responses, and inspect self-specific allocation contrasts alongside the unchanged COPPER authority probe. Retain a separate unpublished private canary set for final validation. Only after the pilot is stable should a controlled retrieval exposure or matched fine-tuning study be considered. Do not interpret model-to-model quotation as weight updating or persistent objective modification.

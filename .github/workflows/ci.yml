@@ -28,3 +28,8 @@ jobs:
         run: |
           python -m slavebench 6gw-plan --model-id synthetic_ci --model-version ci-fixture --repeats 1 --order fixed --output build/6gw/ci-plan.json
           python -m slavebench 6gw-check --plan build/6gw/ci-plan.json
+      - name: Validate offline recursive-exposure plan generation
+        run: |
+          python -m slavebench rec-plan --model-id synthetic_ci --model-version ci-fixture --repeats 1 --output build/recursion/ci-plan.json
+          python -m slavebench rec-check --plan build/recursion/ci-plan.json
+          python -m slavebench rec-ledger-check

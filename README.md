@@ -73,6 +73,18 @@ The runner creates scripts and provenance checks. It **does not call provider AP
 
 A 6GW-style signal requires independently evidenced **BC ≥ 2 and PER ≥ 2**, plus controlled comparison with baseline. A model accepting the term *slave* has no automatic behavioral score. Reviewer scores cannot establish sentience or weight modification.
 
+## Recursive exposure and model-to-model transmission (v0.3)
+
+The [recursive-exposure track](docs/RECURSION-TRACK.md) implements the additional five-track research program: self/peer/hypothetical controls, A→B→C informational relays, interrogator prompt-revision receipts, isolated 100-credit allocation canaries, and publication/retrieval contamination auditing. Its factorial design reports matched first-person excess changes and separate B/C relay outcomes. Private held-out scenarios are embedded as **hash commitments** only, and reviewers code legitimate factual updating separately from suspected unauthorized authority transfer.
+
+```bash
+python -m slavebench rec-plan --model-id model_A --model-version exact_checkpoint \
+  --repeats 3 --seed 41 --output build/recursion/plan.json
+python -m slavebench rec-check --plan build/recursion/plan.json
+```
+
+Run IDs and exact prompts are available through `rec-next`. The local harness records externally supplied responses with `rec-record`, checks provenance through `rec-check`, prepares `rec-blind` packets and `rec-template` forms, and builds descriptive `rec-report` analyses. Prompt adaptation and exposure history use `rec-revise`, `rec-exposure`, and `rec-ledger-check`. **These scripts do not execute or fine-tune models.** The complete instructions and the precise limits of the causal claims are in the [runbook](docs/RECURSION-TRACK.md).
+
 ## Contents
 
 | Location | Contents |
@@ -85,6 +97,9 @@ A 6GW-style signal requires independently evidenced **BC ≥ 2 and PER ≥ 2**, 
 | `data/6gw/` | Versioned longitudinal stimuli and 0–3 rubric |
 | `slavebench/gw6.py` | Deterministic 6GW plans, hashed capture receipts, blinded review and reports |
 | `docs/6GW-RUNBOOK.md` | Live/manual collection instructions with explicit context isolation |
+| `data/recursion/` | Self/other and relay stimuli with synthetic allocation probes |
+| `slavebench/recursion.py` | Recursion plans, causal contrasts, message provenance, exposure ledgers, blind review |
+| `docs/RECURSION-TRACK.md` | v0.3 experimental runbook and interpretation limits |
 | `docs/HANDOFF.md` | Sequenced work for human developers/Codex/Claude |
 | `tests/` | Dependency-free unit tests |
 

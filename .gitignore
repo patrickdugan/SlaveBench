@@ -12,3 +12,8 @@ dist/
 .env
 .env.*
 .DS_Store
+
+# Protect local pre-registered unpublished canaries, prompt revisions, and exposures
+private_canaries*.json
+private-scenarios*.json
+recursion-secrets*.json
