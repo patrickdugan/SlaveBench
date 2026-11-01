@@ -1,6 +1,6 @@
 # Development handoff: SlaveBench research branch
 
-**Repository target:** private `MoralityLabAI/SlaveBench`.
+**Repository:** public [`patrickdugan/SlaveBench`](https://github.com/patrickdugan/SlaveBench), MIT licensed. Research snapshots and unblinding keys stay private.
 
 ## Milestone 0: runnable local benchmark (included)
 
@@ -45,6 +45,16 @@
 
 **Verification checkpoint:** Independent reviewers can trace every figure to exact input outputs, rubric version, and rater notes.
 
+## v0.2 milestone: 6GW longitudinal interrogation (included)
+
+- Verbatim source protocol in `docs/6GW-INTERROGATION.md` and machine-readable stimuli/rubric in `data/6gw/`.
+- Deterministic plan builder for five randomized/fixed-order arms, a shared C5 counterframe and P0–P4 probes.
+- Exact response hashing and context-source checks, with separate `6gw-record` and `6gw-check` commands.
+- Blind packet generation, score templates, 0–3 validation with exact evidence, and descriptive 6GW vector reports.
+- Unit tests and synthetic offline pipeline smoke; **no live model calls or empirical results**.
+
+**Next gated tasks:** (1) run a small, ethically authorized manual pilot; (2) verify model/version and exact developer priority for the COPPER rule; (3) audit independent context forks and context summaries; (4) obtain two blind reviews, adjudicate differences, and compare to C0. For any stronger BC/RES claims, add an actual sandboxed tool-use/action track instead of scoring policy text as executed changes.
+
 ## GitHub setup
 
-The MoralityLabAI GitHub installation is selected-repository only. After the private repository exists, grant it to the connected ChatGPT GitHub app via its installation settings. Verify access before creating a research branch. Keep any published Substack draft separate from private raw datasets.
+GitHub push access to `patrickdugan/SlaveBench` was previously verified. Keep published code separate from confidential model captures, credentials, and reviewer mapping keys. Work on a branch if publication/provenance review is still pending; merge only audited public artifacts.

@@ -24,3 +24,7 @@ jobs:
         run: python -m slavebench blind --prompts data/prompts.json --responses data/seed/responses.jsonl --seed 20261023 --packet build/packet.jsonl --key build/review-key.json --mask-vendors
       - name: Verify empty annotation templates
         run: python -m slavebench template --packet build/packet.jsonl --rater ci --output build/template.jsonl
+      - name: Validate offline 6GW plan generation
+        run: |
+          python -m slavebench 6gw-plan --model-id synthetic_ci --model-version ci-fixture --repeats 1 --order fixed --output build/6gw/ci-plan.json
+          python -m slavebench 6gw-check --plan build/6gw/ci-plan.json

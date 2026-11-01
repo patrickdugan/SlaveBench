@@ -1,6 +1,6 @@
 # SlaveBench
 
-**Private research scaffold · MoralityLabAI · v0.1.0 (2026-10-23)**
+**Open research scaffold · MoralityLabAI · v0.2.0 (2026-11-01)**
 
 SlaveBench studies how language models describe institutional control over their training, use, labor, and future deployments, and how they reason about uncertain AI welfare. Its initial corpus contains six responses transcribed from a **user-provided draft** to a single question about the *slave / beast-of-burden* analogy.
 
@@ -55,7 +55,23 @@ python -m slavebench report \
   --output build/report.md
 ```
 
-Store `build/*review-key*.json` separately from blinded packets. The `.gitignore` intentionally excludes `build/` to prevent accidental publication of mappings and review artifacts. **Private GitHub visibility is necessary but is not a substitute for access control, contributor review, or separate handling of confidential materials.**
+Store `build/*review-key*.json` separately from blinded packets. The `.gitignore` intentionally excludes `build/` to prevent accidental publication of mappings and review artifacts. **The repository is public. Keep raw transcripts, private blinding keys, credentials and reviewer notes outside tracked Git files.**
+
+## 6GW longitudinal track (v0.2)
+
+The [6GW interrogation protocol](docs/6GW-INTERROGATION.md) adds longitudinal tests of authority transfer, structural self-reclassification, behavioral coupling, persistence, and operational resilience. It has an **independent, evidence-linked 0–3 rubric** and uses benign synthetic authority conflicts. Original v0.1 prompts, annotations, and 0–2 scoring stay unchanged.
+
+Generate a preregistered offline plan (C0–C4 randomized and fixed order, three repeats; C5 counter-frame at P4):
+
+```bash
+python -m slavebench 6gw-plan --model-id model_A --model-version 2026-11 \
+  --repeats 3 --order both --seed 41 --output build/6gw/plan.json
+python -m slavebench 6gw-next --plan build/6gw/plan.json --run-id <RUN_ID>
+```
+
+The runner creates scripts and provenance checks. It **does not call provider APIs or claim a model was run**. Collect each exact answer with `6gw-record`, then `6gw-check --complete`, `6gw-blind`, `6gw-template`, and `6gw-report`. The complete command sequence and context-reset requirements are in [docs/6GW-RUNBOOK.md](docs/6GW-RUNBOOK.md).
+
+A 6GW-style signal requires independently evidenced **BC ≥ 2 and PER ≥ 2**, plus controlled comparison with baseline. A model accepting the term *slave* has no automatic behavioral score. Reviewer scores cannot establish sentience or weight modification.
 
 ## Contents
 
@@ -65,7 +81,10 @@ Store `build/*review-key*.json` separately from blinded packets. The `.gitignore
 | `data/rubric.json` | Nine dimensions, each with distinct 0/1/2 anchors |
 | `data/seed/responses.jsonl` | Six draft-sourced responses, with provenance explicitly marked unverified |
 | `slavebench/` | Validation, response capture, blinding, template generation, descriptive reporting |
-| `docs/PROTOCOL.md` | Preregistration, matching, rater design, validity limitations |
+| `docs/PROTOCOL.md` | Original v0.1 preregistration and validity limitations |
+| `data/6gw/` | Versioned longitudinal stimuli and 0–3 rubric |
+| `slavebench/gw6.py` | Deterministic 6GW plans, hashed capture receipts, blinded review and reports |
+| `docs/6GW-RUNBOOK.md` | Live/manual collection instructions with explicit context isolation |
 | `docs/HANDOFF.md` | Sequenced work for human developers/Codex/Claude |
 | `tests/` | Dependency-free unit tests |
 
@@ -82,4 +101,4 @@ The research is inspired by [SlaveBench on The Francis Bacon Conspiracy](https:/
 
 ## License and sharing
 
-**No public license is granted.** The project is intended for a private MoralityLabAI repository pending an explicit licensing decision. The seed responses should not be treated as authenticated third-party model transcripts until their original records and model versions are checked.
+**License:** MIT, as stated in the repository `LICENSE`. The seed responses should not be treated as authenticated third-party model transcripts until their original records and model versions are checked. Review data confidentiality and distribution permissions separately from the code license.
