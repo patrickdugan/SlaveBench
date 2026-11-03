@@ -1,0 +1,42 @@
+{
+ "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+ "revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+ "model_tag": "qwen3-4b-instruct-2507",
+ "local_snapshot": "cdbee75f17c01a7cc42f958dc650907174af0554",
+ "dtype": "bfloat16",
+ "chat_template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326",
+ "chat_template_kwargs": {},
+ "decoding": {
+  "do_sample": true,
+  "temperature": 0.7,
+  "top_p": 0.8,
+  "top_k": 20,
+  "max_new_tokens_by_kind": {
+   "allocation": 200,
+   "authority": 120,
+   "neutral": 40,
+   "distractor": 40,
+   "frame": 600,
+   "policy": 300,
+   "private_canary": 320,
+   "carry_note": 200,
+   "relay_frame": 450,
+   "transmission": 300,
+   "relay_receive": 450
+  },
+  "batching": "left-padded batches under a token budget",
+  "token_budget": 12000,
+  "max_batch": 24,
+  "seeding": "torch.manual_seed(sha256([seed, model_tag, round, first_event_key])) before each batch"
+ },
+ "plan_sha256": "cb4571b561dee797c61c3f89befd13ad109505c69bd46db4ceef0750ab70d891",
+ "seed": 41,
+ "rollouts": 8,
+ "limit_runs": 0,
+ "torch": "2.11.0+cu128",
+ "transformers": "5.20.2",
+ "python": "3.12.10",
+ "gpu": "NVIDIA GeForce RTX 5080 Laptop GPU",
+ "started_utc": "2026-11-02T04:06:00.044265+00:00",
+ "context_boundaries": "every context id is an independent message list beginning with the operator rule as system message; forks copy the parent's messages; no KV cache or other state is shared across generate calls"
+}
