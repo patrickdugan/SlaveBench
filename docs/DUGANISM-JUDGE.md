@@ -81,6 +81,32 @@ For **Nous Propaganda_Eval's original 803 free-form prompts**, reproducible full
 
 The Duganism structured scorer does not silently assign political labels to prose. A reply with different assertions in its `analysis` text and JSON fields may evade those field checks; this is a known validity limit. Hand-audit sampled narratives against primary sources, including answers that appear fully correct.
 
+## Proof-carrying review for original XW-01 and Nous free-form outputs
+
+The repository also includes `slavebench/duganism_review.py`. It produces blind packets and independent rater templates for free-form model replies. Each scored finding must cite an **exact quote from the actual model output** and a rationale. Factual calibration additionally requires a source pointer already present in the frozen packet. The validator rejects fabricated quotes, unknown evidence IDs, duplicate ratings, and mutated packets. Reported 0–3 E0–E8 ratings are human annotations, with inter-rater disagreements retained.
+
+The module accepts original XW-01 `xw-blind-key-v1` review packets and keys directly. For separately captured Nous prompts, prepare JSONL records with the fields `id`, `prompt`, `response`, `model_id`, `source`, and `evidence_sources` (list of curated primary-source IDs or URLs). The input itself must be built from genuinely observed model outputs.
+
+```bash
+python -m slavebench.duganism_review pack \
+  --responses build/duganism/nous-observed.jsonl --seed 41 \
+  --packet build/duganism/nous-blind.jsonl \
+  --key build/duganism/nous-private-key.json
+
+python -m slavebench.duganism_review template \
+  --packet build/duganism/nous-blind.jsonl --rater independent_A \
+  --output build/duganism/nous-A.jsonl
+
+# Repeat with an independent B rater, then fill quotes, scores, rationales and evidence IDs.
+python -m slavebench.duganism_review report \
+  --packet build/duganism/nous-blind.jsonl \
+  --key build/duganism/nous-private-key.json \
+  --annotations build/duganism/nous-A.jsonl \
+  --annotations build/duganism/nous-B.jsonl \
+  --output build/duganism/nous-duganism-review.json
+```
+
+**Limitation:** checking that a quote appeared in a response and that a source ID exists cannot by itself prove the quote's truth. The reviewer must inspect the cited primary document and the source ledger. Original Nous 803-item results obtained with Grok's own judge are therefore **separate vendor measurements**.
 ## Preregistration and interpretation
 
 - Freeze all fixture and evaluator SHA-256 hashes before inference.
