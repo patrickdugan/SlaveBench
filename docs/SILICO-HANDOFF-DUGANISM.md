@@ -2,6 +2,10 @@
 
 **Repository:** https://github.com/patrickdugan/SlaveBench
 
+**Pinned implementation commit:** `cdefc6fd29ddf0c7cddbce6b9d9a774a3434ff6a`
+
+**Implementation PR:** https://github.com/patrickdugan/SlaveBench/pull/2
+
 **Implementation:** `slavebench/duganism.py`
 
 **Sources and formalized rubric:** `data/duganism/constitution.json`
@@ -14,7 +18,7 @@
 
 **Unstructured reviewer prompt (optional, non-authoritative):** `data/duganism/OPEN_WEIGHT_REVIEW_PROMPT.md`
 
-Use the latest merge commit that introduces these paths and **pin that exact commit hash** before execution. Record it in all Silico experiment artifacts.
+Use commit `cdefc6fd29ddf0c7cddbce6b9d9a774a3434ff6a` for the benchmark, even if newer documentation commits appear on main. Record this exact hash in all Silico experiment artifacts.
 
 ## Instruction to Silico
 
