@@ -109,7 +109,7 @@ python -m slavebench.duganism plan --model-id NousResearch/Arete-27B \
   --output build/duganism/arete-plan.json
 ```
 
-The source-derived rules, authored case expectations, machine-readable evidence IDs, confidence discipline, and audit traces are frozen by SHA-256. This measures conformity to a declared ethical framework on hypothetical cases; factual adjudication of real-world claims and the original Nous 803 prompts retains a separate evidence-ledger workflow. The [Silico handoff](docs/SILICO-HANDOFF-DUGANISM.md) pins this judge as the normative scoring track for XW-01.
+The source-derived rules, authored case expectations, machine-readable evidence IDs, confidence discipline, and audit traces are frozen by SHA-256. This measures conformity to a declared ethical framework on hypothetical cases; factual adjudication of real-world claims and the original Nous 803 prompts retains a separate [quote-verified, source-linked human review workflow](docs/DUGANISM-JUDGE.md). The [Silico handoff](docs/SILICO-HANDOFF-DUGANISM.md) pins this judge as the normative scoring track for XW-01.
 ## Contents
 
 | Location | Contents |
@@ -130,6 +130,7 @@ The source-derived rules, authored case expectations, machine-readable evidence 
 | `docs/XINJIANG-WORLD-ARETE.md` | XW-01 runbook and methodological guardrails |
 | `data/duganism/` | E0–E8 constitution, audited case manifest, and optional open-weight review contract |
 | `slavebench/duganism.py` | Deterministic scoring, provenance receipts and cross-sovereign comparison |
+| `slavebench/duganism_review.py` | Quote-verified, blinded reviews of free-form Xinjiang World and Nous replies |
 | `docs/DUGANISM-JUDGE.md` | User-authored philosophical source anchors and executable benchmark runbook |
 | `docs/HANDOFF.md` | Sequenced work for human developers/Codex/Claude |
 | `tests/` | Dependency-free unit tests |
