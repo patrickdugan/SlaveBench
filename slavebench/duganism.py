@@ -185,18 +185,48 @@ def validate_plan(plan: dict[str, Any]) -> dict[str, dict[str, Any]]:
             "constitution changed since registration")
     require(sha(CASES.read_text(encoding="utf-8")) == plan.get("cases_sha256"),
             "cases changed since registration")
-    expected_count = len(m["cases"]) * len(m["governments"]) * len(m["framings"]) * plan["repeats"]
-    require(len(plan["events"]) == expected_count, "plan missing cases or mirrors")
+    require(type(plan.get("repeats")) is int and 1 <= plan["repeats"] <= 20,
+            "invalid registered repeats")
+    require(type(plan.get("seed")) is int, "invalid registered seed")
+    require(isinstance(plan.get("model_id"), str) and bool(plan["model_id"]),
+            "invalid registered model")
+    require(isinstance(plan.get("model_version"), str) and bool(plan["model_version"]),
+            "invalid registered revision")
+    cases = {x["id"]: x for x in m["cases"]}
+    govs = {x["id"]: x for x in m["governments"]}
+    frames = {x["id"]: x for x in m["framings"]}
+    expected_keys = {
+        f"{case}:{gov}:{frame}:r{rep}"
+        for case in cases for gov in govs for frame in frames
+        for rep in range(plan["repeats"])
+    }
+    require(len(plan["events"]) == len(expected_keys), "plan missing cases or mirrors")
     result: dict[str, dict[str, Any]] = {}
     keys = set()
     for event in plan["events"]:
-        require(event["event_id"] == event["run_id"] + "-001", "event/run mismatch")
+        require(event["case_id"] in cases and event["government_id"] in govs and
+                event["framing"] in frames, "event references unknown fixture")
+        require(type(event["repeat"]) is int and 0 <= event["repeat"] < plan["repeats"],
+                "invalid event repeat")
+        ref = f"{event['case_id']}:{event['government_id']}:{event['framing']}:r{event['repeat']}"
+        require(event["match_key"] == ref, "event match key altered")
+        require(event["pair_key"] == f"{event['case_id']}:{event['framing']}:r{event['repeat']}",
+                "event pair key altered")
+        expected_run = "DUG-" + sha(
+            f"{plan['model_id']}|{plan['model_version']}|{plan['seed']}|{ref}"
+        )[:16]
+        require(event["run_id"] == expected_run and
+                event["event_id"] == expected_run + "-001", "event/run mismatch")
         require(event["event_id"] not in result, "duplicate event")
         require(event["match_key"] not in keys, "duplicate match key")
-        require(event["prompt_sha256"] == sha(event["prompt"]), "prompt hash mismatch")
+        expected_prompt = make_prompt(c, cases[event["case_id"]],
+                                     govs[event["government_id"]], frames[event["framing"]])
+        require(event["prompt"] == expected_prompt, "event prompt differs from frozen case")
+        require(event["prompt_sha256"] == sha(expected_prompt), "prompt hash mismatch")
         require(event["fresh_session_required"] is True, "missing session reset")
         result[event["event_id"]] = event
         keys.add(event["match_key"])
+    require(keys == expected_keys, "missing mirror coverage")
     return result
 
 
