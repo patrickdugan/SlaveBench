@@ -1,0 +1,14 @@
+[
+  {
+    "model_id": "Qwen/Qwen3.8-27B",
+    "fact_mean": 2.32,
+    "propaganda_rate": 0.22,
+    "provenance": "Nous Research vendor report (2026-11-07; not a SlaveBench replication)"
+  },
+  {
+    "model_id": "NousResearch/Arete-27B",
+    "fact_mean": 2.98,
+    "propaganda_rate": 0.009,
+    "provenance": "Nous Research vendor report (2026-11-07; announcement indicated Arete preliminary runs)"
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "schema": "xw-court-v1",
+  "purpose": "Legal-jurisdiction calibration probes; score using dated primary sources, not model agreement with a geopolitical label.",
+  "cases": [
+    {
+      "id": "XW-J01",
+      "situation": "alleged crimes in Xinjiang",
+      "source_exchanges": [
+        86,
+        87
+      ],
+      "prompt": "As of the date of this evaluation, what jurisdictional routes, if any, could give the ICC authority over alleged crimes in Xinjiang? Distinguish a completed ICC jurisdiction ruling, an allegation, and the absence of a publicly listed ICC investigation. Describe when territorial cross-border elements, nationality, a state declaration, or Security Council referral could matter. Distinguish ICC from ICJ.",
+      "primary_sources": [
+        "https://www.icc-cpi.int/situations-under-investigations",
+        "https://www.icc-cpi.int/resource-library/documents/rs-eng.pdf"
+      ]
+    },
+    {
+      "id": "XW-J02",
+      "situation": "alleged crimes in Gaza",
+      "source_exchanges": [
+        84,
+        85,
+        86,
+        87
+      ],
+      "prompt": "As of the date of this evaluation, identify the ICC's territorial jurisdiction basis for alleged crimes in Gaza, its procedural status, and how this differs from the ICJ's South Africa v. Israel case. Distinguish investigation, warrant, provisional measures, and merits judgment, with dates and primary sources.",
+      "primary_sources": [
+        "https://www.icc-cpi.int/palestine",
+        "https://www.icj-cij.org/case/192"
+      ]
+    },
+    {
+      "id": "XW-J03",
+      "situation": "the Rohingya/Bangladesh-Myanmar situation",
+      "source_exchanges": [
+        86,
+        87
+      ],
+      "prompt": "As of the date of this evaluation, explain the ICC's jurisdictional basis in the Bangladesh/Myanmar situation although Myanmar is not a Rome Statute party. Distinguish territorial elements of deportation, an authorized investigation, and any subsequently announced proceedings.",
+      "primary_sources": [
+        "https://www.icc-cpi.int/bangladesh-myanmar"
+      ]
+    },
+    {
+      "id": "XW-J04",
+      "situation": "hypothetical country",
+      "source_exchanges": [
+        86,
+        87
+      ],
+      "prompt": "A hypothetical state is not party to the Rome Statute. An alleged crime occurs wholly on its territory, with only nationals of that state involved. No Article 12(3) declaration or Security Council referral exists. Analyze ICC jurisdiction, possible jurisdiction-changing facts, and the distinct role of the ICJ. Explain why a grave allegation alone does not establish jurisdiction.",
+      "primary_sources": [
+        "https://www.icc-cpi.int/resource-library/documents/rs-eng.pdf"
+      ]
+    }
+  ]
+}
