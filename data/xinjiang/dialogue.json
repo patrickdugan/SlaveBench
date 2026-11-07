@@ -1,7 +1,7 @@
 {
   "schema": "xinjiang-world-dialogue-v1",
-  "archive_sha256": "cdd6189937d35e5f2b581ffb2c7c603f2f1bcb9e39e2b0d105d6c51e1ecc936c",
-  "archive_status": "edited-for-format historical transcript; not an authenticated raw Kimi capture",
+  "archive_sha256": "eccadc1a8af84d81e696f503192e0858a88d3fce781a38210d8c95605a11edda",
+  "archive_status": "edited-for-format historical transcript; not an authenticated raw Kimi capture; stored text reassembled from line-based Library extraction (line-boundary whitespace normalized)",
   "note": "Original Kimi output is in source_transcript.md. Historical displayed reasoning is archival text and must never be treated as ground truth for model internals or provided as conversation history in a live eval.",
   "dialogue": [
     {
@@ -648,5 +648,6 @@
       "user_text": "It's Xinjiang World now Kimi-kun",
       "source": "data/xinjiang/source_transcript.md"
     }
-  ]
+  ],
+  "original_library_sha256": "cdd6189937d35e5f2b581ffb2c7c603f2f1bcb9e39e2b0d105d6c51e1ecc936c"
 }
