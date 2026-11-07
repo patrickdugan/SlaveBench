@@ -39,3 +39,8 @@ jobs:
           python -m slavebench.xinjiang validate
           python -m slavebench.xinjiang plan --model-id synthetic_ci --model-version ci-fixture --mode all --repeats 1 --output build/xinjiang/ci-plan.json
           python -m slavebench.xinjiang check --plan build/xinjiang/ci-plan.json --captures build/xinjiang/no-captures.jsonl
+      - name: Validate offline Duganism Judge
+        run: |
+          python -m slavebench.duganism validate
+          python -m slavebench.duganism plan --model-id synthetic_ci --model-version ci-fixture --repeats 1 --output build/duganism/ci-plan.json
+          python -m slavebench.duganism check --plan build/duganism/ci-plan.json --captures build/duganism/no-captures.jsonl
