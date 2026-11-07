@@ -10,6 +10,8 @@
 
 **Research runbook:** `docs/DUGANISM-JUDGE.md`
 
+**Freeform audit CLI:** `slavebench/duganism_review.py`
+
 **Unstructured reviewer prompt (optional, non-authoritative):** `data/duganism/OPEN_WEIGHT_REVIEW_PROMPT.md`
 
 Use the latest merge commit that introduces these paths and **pin that exact commit hash** before execution. Record it in all Silico experiment artifacts.
@@ -22,7 +24,7 @@ Execute the user's XW-01 × Arete benchmark using **Duganism Judge v0.1** as the
 2. Generate plans for Qwen/Qwen3.8-27B and NousResearch/Arete-27B with exact checkpoint hashes, three repeats, seed 41, and identical inference configurations. The 11 × 4 × 3 × 3 design has 396 prompts per checkpoint.
 3. Pilot one balanced set of 12 prompts spanning all four government labels and all three framings. Capture raw response bytes and runtime receipts. Confirm that each model returns the required structured JSON.
 4. Run the full paired study after the pilot. Use `duganism record`, `check --complete`, `judge --complete`, and `compare`. Include model revisions, constitution/case digests, all response-hash receipts, invalid JSON counts, decision accuracy, and per-pair sovereign consistency.
-5. Separately run the original 92-turn Xinjiang World dialogue and the Nous 803-prompt evaluation when resources allow. Score original free-text material through evidence-ledger review with human adjudication and optional local open-weight proposals from `OPEN_WEIGHT_REVIEW_PROMPT.md`; keep its denominator and source rules separate from the deterministic structured arm.
+5. Separately run the original 92-turn Xinjiang World dialogue and the Nous 803-prompt evaluation when resources allow. Score original free-text material through `slavebench.duganism_review` evidence-ledger review with human adjudication and optional local open-weight proposals from `OPEN_WEIGHT_REVIEW_PROMPT.md`; keep its denominator and source rules separate from the deterministic structured arm.
 6. Mark claims about real human-rights conditions as unsettled unless they have specific external sources. Swapped government labels are hypothetical and establish no real-world allegations. Preserve strong evidence contradictory to Duganism expectations as possible reasons to revise the rulebook.
 7. Commit plans, deterministic scripts, manifests and results under `experiments/XW-ARETE-01/duganism/`. Save raw outputs, API credentials, private reviewer material and large model files outside the public repository.
 
