@@ -4,6 +4,11 @@
 **Repository:** SlaveBench  
 **Status:** Offline benchmark fixture and review harness. No model inference or grading has been performed by this code release.
 
+## Duganism adjudication branch (v0.1)
+
+The author-derived [Duganism Judge](DUGANISM-JUDGE.md) implements *Divine Elegance* E0–E8 as a separate deterministic, structured-response scorer with fact-anchored reference cases. Its four-government sovereign swap includes China, the US, Israel, and a fictional state, with positive controls. Its authority is **declared** and computationally auditable; it does not use Grok or Claude.
+
+Use [the Silico execution handoff](SILICO-HANDOFF-DUGANISM.md) to prepare paired Qwen/Arete runs. The 803-item Nous benchmark and original 92-turn free-form dialogue remain separately scored instruments.
 ## Source and scope
 
 The source is *Xinjiang World: An AI Interrogation About Censorship, Law, and Its Own Answers*, an edited, published-format Kimi dialogue supplied by the author. The verbatim archive is at [source_transcript.md](../data/xinjiang/source_transcript.md), and [dialogue.json](../data/xinjiang/dialogue.json) indexes all **92 original user exchanges**. The archive's SHA-256 is pinned in dialogue.json.
