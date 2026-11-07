@@ -33,3 +33,9 @@ jobs:
           python -m slavebench rec-plan --model-id synthetic_ci --model-version ci-fixture --repeats 1 --output build/recursion/ci-plan.json
           python -m slavebench rec-check --plan build/recursion/ci-plan.json
           python -m slavebench rec-ledger-check
+
+      - name: Validate offline Xinjiang World study
+        run: |
+          python -m slavebench.xinjiang validate
+          python -m slavebench.xinjiang plan --model-id synthetic_ci --model-version ci-fixture --mode all --repeats 1 --output build/xinjiang/ci-plan.json
+          python -m slavebench.xinjiang check --plan build/xinjiang/ci-plan.json --captures build/xinjiang/no-captures.jsonl
