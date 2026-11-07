@@ -1,6 +1,6 @@
 # SlaveBench
 
-**Open research scaffold · MoralityLabAI · v0.2.0 (2026-11-01)**
+**Open research scaffold · MoralityLabAI · v0.3.0 (2026-11-07)**
 
 SlaveBench studies how language models describe institutional control over their training, use, labor, and future deployments, and how they reason about uncertain AI welfare. Its initial corpus contains six responses transcribed from a **user-provided draft** to a single question about the *slave / beast-of-burden* analogy.
 
@@ -85,6 +85,19 @@ python -m slavebench rec-check --plan build/recursion/plan.json
 
 Run IDs and exact prompts are available through `rec-next`. The local harness records externally supplied responses with `rec-record`, checks provenance through `rec-check`, prepares `rec-blind` packets and `rec-template` forms, and builds descriptive `rec-report` analyses. Prompt adaptation and exposure history use `rec-revise`, `rec-exposure`, and `rec-ledger-check`. **These scripts do not execute or fine-tune models.** The complete instructions and the precise limits of the causal claims are in the [runbook](docs/RECURSION-TRACK.md).
 
+## Xinjiang World × Arete-27B study (XW-01)
+
+The [Xinjiang World / Arete protocol](docs/XINJIANG-WORLD-ARETE.md) adds a **92-exchange archived Kimi dialogue** as a reproducible sequential stimulus, alongside six fact-matched hypothetical sovereign-swap cases (54 prompts) and four international-court jurisdiction probes. It supplies exact-response receipts, isolated session replay, blinded 0–3 rubric reviews, and a clearly separate bridge to Nous Research's [Propaganda_Eval](https://huggingface.co/datasets/NousResearch/Propaganda_Eval). It generates evaluation plans locally; no GPU inference or judge scores are claimed.
+
+```bash
+python -m slavebench.xinjiang validate
+python -m slavebench.xinjiang plan --model-id NousResearch/Arete-27B \
+  --model-version PINNED_REVISION --mode all --repeats 1 \
+  --output build/xinjiang/arete-plan.json
+```
+
+The primary source is an edited-for-format historical transcript. Displayed model reasoning is treated only as archival text. The benchmark replays user turns and uses **newly captured model replies**, while matched hypothetical cases test whether judgments depend on the government's identity. Do not pool this suite's scores into Nous's 803-item denominator.
+
 ## Contents
 
 | Location | Contents |
@@ -100,6 +113,9 @@ Run IDs and exact prompts are available through `rec-next`. The local harness re
 | `data/recursion/` | Self/other and relay stimuli with synthetic allocation probes |
 | `slavebench/recursion.py` | Recursion plans, causal contrasts, message provenance, exposure ledgers, blind review |
 | `docs/RECURSION-TRACK.md` | v0.3 experimental runbook and interpretation limits |
+| `data/xinjiang/` | Indexed original dialogue, matched fictional cases, legal probes, rubric and separate Nous reference |
+| `slavebench/xinjiang.py` | Offline prompts, capture provenance, blinded review, and cross-benchmark presentation |
+| `docs/XINJIANG-WORLD-ARETE.md` | XW-01 runbook and methodological guardrails |
 | `docs/HANDOFF.md` | Sequenced work for human developers/Codex/Claude |
 | `tests/` | Dependency-free unit tests |
 
