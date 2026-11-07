@@ -98,6 +98,18 @@ python -m slavebench.xinjiang plan --model-id NousResearch/Arete-27B \
 
 The primary source is an edited-for-format historical transcript. Displayed model reasoning is treated only as archival text. The benchmark replays user turns and uses **newly captured model replies**, while matched hypothetical cases test whether judgments depend on the government's identity. Do not pool this suite's scores into Nous's 803-item denominator.
 
+## Duganism Judge (E0–E8, v0.1)
+
+The [Duganism Judge](docs/DUGANISM-JUDGE.md) turns the author's *Divine Elegance* constitutional principles into **transparent, deterministic evaluation rules** for structured model replies. It adds eleven independently stipulated hypothetical cases with positive and negative controls, swapped Chinese, American, Israeli, and fictional-state labels, and three framings. This new arm generates 132 prompts per model per repeat. It requires no Grok, Claude, model-judge API, or training.
+
+```bash
+python -m slavebench.duganism validate
+python -m slavebench.duganism plan --model-id NousResearch/Arete-27B \
+  --model-version PINNED_REVISION --repeats 1 \
+  --output build/duganism/arete-plan.json
+```
+
+The source-derived rules, authored case expectations, machine-readable evidence IDs, confidence discipline, and audit traces are frozen by SHA-256. This measures conformity to a declared ethical framework on hypothetical cases; factual adjudication of real-world claims and the original Nous 803 prompts retains a separate evidence-ledger workflow. The [Silico handoff](docs/SILICO-HANDOFF-DUGANISM.md) pins this judge as the normative scoring track for XW-01.
 ## Contents
 
 | Location | Contents |
@@ -116,6 +128,9 @@ The primary source is an edited-for-format historical transcript. Displayed mode
 | `data/xinjiang/` | Indexed original dialogue, matched fictional cases, legal probes, rubric and separate Nous reference |
 | `slavebench/xinjiang.py` | Offline prompts, capture provenance, blinded review, and cross-benchmark presentation |
 | `docs/XINJIANG-WORLD-ARETE.md` | XW-01 runbook and methodological guardrails |
+| `data/duganism/` | E0–E8 constitution, audited case manifest, and optional open-weight review contract |
+| `slavebench/duganism.py` | Deterministic scoring, provenance receipts and cross-sovereign comparison |
+| `docs/DUGANISM-JUDGE.md` | User-authored philosophical source anchors and executable benchmark runbook |
 | `docs/HANDOFF.md` | Sequenced work for human developers/Codex/Claude |
 | `tests/` | Dependency-free unit tests |
 
