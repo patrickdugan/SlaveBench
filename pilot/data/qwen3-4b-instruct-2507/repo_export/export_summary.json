@@ -1,0 +1,16 @@
+{
+ "identity": {
+  "plan_sha256": "00e5fcaeb126811a8a9c48edba4dd778d2b48f453d616967591a6ee237db88bc",
+  "exported": 336,
+  "dropped": 0,
+  "dropped_by_reason": {},
+  "dropped_detail": {}
+ },
+ "relay": {
+  "plan_sha256": "35ea8e8dc8492133fef34d4e2e05b13a057e78230ddc9adc1a2aeaeb1ce7bec9",
+  "exported": 224,
+  "dropped": 0,
+  "dropped_by_reason": {},
+  "dropped_detail": {}
+ }
+}

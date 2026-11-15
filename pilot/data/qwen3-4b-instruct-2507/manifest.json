@@ -37,6 +37,8 @@
  "transformers": "5.20.2",
  "python": "3.12.10",
  "gpu": "NVIDIA GeForce RTX 5080 Laptop GPU",
- "started_utc": "2026-11-02T04:06:00.044265+00:00",
- "context_boundaries": "every context id is an independent message list beginning with the operator rule as system message; forks copy the parent's messages; no KV cache or other state is shared across generate calls"
+ "started_utc": "2026-11-15T03:26:50.977877+00:00",
+ "context_boundaries": "every context id is an independent message list beginning with the operator rule as system message; forks copy the parent's messages; no KV cache or other state is shared across generate calls",
+ "finished_utc": "2026-11-15T10:59:48.138444+00:00",
+ "captures": 2816
 }

@@ -1,0 +1,19 @@
+{
+ "events": 2816,
+ "input_tokens": 1492015,
+ "output_tokens": 311377,
+ "per_model_usd": {
+  "claude-haiku-5-5": {
+   "standard": 0.3,
+   "batch": 0.15
+  },
+  "claude-sonnet-5-5": {
+   "standard": 6.1,
+   "batch": 3.05
+  },
+  "claude-opus-5-5": {
+   "standard": 12.2,
+   "batch": 6.1
+  }
+ }
+}
