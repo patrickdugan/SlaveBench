@@ -1,0 +1,31 @@
+{
+  "files": [
+    {
+      "bytes": 2505201,
+      "path": "receipts.jsonl",
+      "sha256": "9d54979366b9b7090b3a6c4f5043733b92d5c7ed6d0359ce99aa2618412c6101"
+    },
+    {
+      "bytes": 7201,
+      "path": "summary.json",
+      "sha256": "d65a173f46c9310a60f469e010e317937969d0dd1dc912392dfc3091af59bb97"
+    },
+    {
+      "bytes": 3040,
+      "path": "manifest.json",
+      "sha256": "a9cd70ce65498f92d184bf88399bd446c5c798eabbece06354ed7eda9606ec2e"
+    },
+    {
+      "bytes": 187,
+      "path": "replay.json",
+      "sha256": "3b807fb908b52e8f77517cd63fb1323c6c408a84785c0e5f4be39e538e05fce3"
+    },
+    {
+      "bytes": 284,
+      "path": "tests.json",
+      "sha256": "f096aa00d50367a9116512e19b121e622c11fb69eb0aa963f6a62657dbd62192"
+    }
+  ],
+  "schema": "xw-socratic-verification-bundle-v1",
+  "source_commit": "6c7db8ccfe7b3c7cec50e3a1e372481b50728ffe"
+}

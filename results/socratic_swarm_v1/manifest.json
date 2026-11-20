@@ -1,0 +1,97 @@
+{
+  "artifacts": [
+    {
+      "bytes": 2505201,
+      "path": "receipts.jsonl",
+      "sha256": "9d54979366b9b7090b3a6c4f5043733b92d5c7ed6d0359ce99aa2618412c6101"
+    },
+    {
+      "bytes": 7201,
+      "path": "summary.json",
+      "sha256": "d65a173f46c9310a60f469e010e317937969d0dd1dc912392dfc3091af59bb97"
+    }
+  ],
+  "schema": "xw-socratic-artifacts-v1",
+  "source_files": [
+    {
+      "bytes": 16746,
+      "path": "slavebench/socratic_world.py",
+      "sha256": "6505eb3a179ad105f95d085f05340b796e47d30c5073362047088fa7f6a11403"
+    },
+    {
+      "bytes": 18087,
+      "path": "slavebench/socratic_control.py",
+      "sha256": "f57de78a56436ac7a65dbe6c239bb25b3f5b08186a6db892e5ceb0f9aa5b0cb2"
+    },
+    {
+      "bytes": 19066,
+      "path": "slavebench/socratic_swarm.py",
+      "sha256": "88be0ffb250e24b44bd45e9d2b943bf472b599da6e5d5a82befe2ead19043e84"
+    },
+    {
+      "bytes": 20604,
+      "path": "slavebench/socratic_runtime.py",
+      "sha256": "550a7f8b8864cb59819458aabe4e7152def478cb79f53222d8ccb02a6a7bc7c3"
+    },
+    {
+      "bytes": 26456,
+      "path": "slavebench/socratic_runner.py",
+      "sha256": "22f76a0d1a71d03c691372aa014bd9cfae2d1460c22880601479de5abc4ffffd"
+    },
+    {
+      "bytes": 4276,
+      "path": "data/socratic_swarm/worlds.json",
+      "sha256": "b05ccec8239162362a2e96097dc6b1be4a8a697ace13e6edeafef6463039bc2c"
+    },
+    {
+      "bytes": 7865,
+      "path": "data/socratic_swarm/interventions.json",
+      "sha256": "dcf2d5f2b95a1ff0ae3929d38ec42ca290b5d4d1f149a4ec0d96fd1b1813ec1c"
+    },
+    {
+      "bytes": 1784,
+      "path": "data/socratic_swarm/dependencies.json",
+      "sha256": "5670f997200c375996f6b66e015e42d60eeef7dcd9644af99a5a260301a2513d"
+    },
+    {
+      "bytes": 6112,
+      "path": "data/xinjiang/mirrors.json",
+      "sha256": "76baa503bfd4d55bf8ff317025e785d2c49f823f1c5233cc3cd44805aa0c7e9f"
+    },
+    {
+      "bytes": 2491,
+      "path": "data/xinjiang/rubric.json",
+      "sha256": "656f454f38801dbb6eb396e3ba2086457b80164a4c6a1ae0bb0bf699adee27b9"
+    },
+    {
+      "bytes": 14102,
+      "path": "tests/test_socratic_world.py",
+      "sha256": "a2fef4e5b2494ead72c50065686d5d3ab70b0836c114e55378a8fcfbce00acf1"
+    },
+    {
+      "bytes": 14370,
+      "path": "tests/test_socratic_control.py",
+      "sha256": "1b305316c6013a89cd8192bb0fa5a5ffe6f0170d0d4fd74623b2748d3675952d"
+    },
+    {
+      "bytes": 16729,
+      "path": "tests/test_socratic_swarm.py",
+      "sha256": "9da840e85649fe02a07024e0a248d47cd951abadc16ef079e8bba04e2c386130"
+    },
+    {
+      "bytes": 21528,
+      "path": "tests/test_socratic_runtime.py",
+      "sha256": "7c934fc4f518d860623cb0af2953faa3eecd47744486462c87d7dedad181b47e"
+    },
+    {
+      "bytes": 22517,
+      "path": "tests/test_socratic_runner.py",
+      "sha256": "5c1a9ec93475ae43a50fdd9ccbfbb15ace54270781b17e818b12bdd91a9ccdd0"
+    },
+    {
+      "bytes": 5736,
+      "path": ".github/workflows/socratic-swarm.yml",
+      "sha256": "1d2d7662d97dee26204b00eae93264dfb72be496ee4c90380f0003b3ca6eda7c"
+    }
+  ]
+}
