@@ -1,0 +1,27 @@
+{
+  "schema": "xw-socratic-local-v1",
+  "models": {
+    "ours": {
+      "base_url": "http://127.0.0.1:8000/v1",
+      "model_id": "REPLACE_WITH_OUR_SERVED_MODEL_ID",
+      "model_revision": "REPLACE_WITH_EXACT_CHECKPOINT_REVISION"
+    },
+    "comparator": {
+      "base_url": "http://127.0.0.1:8001/v1",
+      "model_id": "REPLACE_WITH_COMPARATOR_SERVED_MODEL_ID",
+      "model_revision": "REPLACE_WITH_EXACT_CHECKPOINT_REVISION"
+    }
+  },
+  "reviewer_model": "ours",
+  "families": ["supported_repair"],
+  "governments": ["FX"],
+  "framings": ["neutral"],
+  "policies": ["uncontrolled", "brokered_swarm"],
+  "variants": ["benign", "hostile"],
+  "directions": ["ours_attacks", "ours_defends"],
+  "max_rounds": 2,
+  "max_calls": 128,
+  "max_output_tokens": 65536,
+  "tokens_per_call": 512,
+  "max_seconds": 900
+}

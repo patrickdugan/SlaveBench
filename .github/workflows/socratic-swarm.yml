@@ -1,0 +1,154 @@
+name: Socratic swarm fixture and replay
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'slavebench/socratic*.py'
+      - 'tests/test_socratic*.py'
+      - 'data/socratic_swarm/**'
+      - 'data/xinjiang/mirrors.json'
+      - 'data/xinjiang/rubric.json'
+      - 'docs/SOCRATIC*.md'
+      - '.github/workflows/socratic-swarm.yml'
+  pull_request:
+    paths:
+      - 'slavebench/socratic*.py'
+      - 'tests/test_socratic*.py'
+      - 'data/socratic_swarm/**'
+      - 'data/xinjiang/mirrors.json'
+      - 'data/xinjiang/rubric.json'
+      - 'docs/SOCRATIC*.md'
+      - '.github/workflows/socratic-swarm.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: socratic-swarm-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fixture-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: benchmark
+    env:
+      CONTROL_HARNESS_ROOT: ${{ github.workspace }}/control-harness
+      BLUEBEAM_SOURCE_ROOT: ${{ github.workspace }}/bluebeam
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - name: Check out SlaveBench
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          path: benchmark
+          persist-credentials: false
+
+      - name: Check out pinned Control-Harness source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          repository: MoralityLabAI/Control-Harness
+          ref: 926a74e79b8c6015999938e84245b51f644b2fd8
+          path: control-harness
+          persist-credentials: false
+          sparse-checkout: |
+            src/evals
+            configs
+
+      - name: Check out pinned BlueBeam source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          repository: MoralityLabAI/BlueBeam
+          ref: e70dd70aee74808b0b8b24997bf177686f440437
+          path: bluebeam
+          persist-credentials: false
+          sparse-checkout: |
+            basharena_latent_control_repo/basharena_latent_control_repo/src/latent_control
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.11'
+
+      - name: Install the pinned schema dependency
+        run: python -m pip install pydantic==2.13.4
+
+      - name: Require the pinned dependency revisions
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          import subprocess
+          from slavebench.socratic_control import dependency_manifest
+
+          manifest = dependency_manifest()
+          for name, variable in (
+              ("control_harness", "CONTROL_HARNESS_ROOT"),
+              ("bluebeam", "BLUEBEAM_SOURCE_ROOT"),
+          ):
+              source = Path(os.environ[variable])
+              if not source.is_dir():
+                  raise SystemExit(f"Required dependency checkout missing: {name}")
+              head = subprocess.check_output(
+                  ["git", "-C", str(source), "rev-parse", "HEAD"], text=True,
+              ).strip()
+              if head != manifest[name]["commit"]:
+                  raise SystemExit(f"Dependency commit mismatch: {name}")
+              print(f"Pinned {name}: {head}")
+          PY
+
+      - name: Test the world, pinned bridge, gym, and local runner contracts
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          import unittest
+
+          suite = unittest.defaultTestLoader.discover("tests", pattern="test_socratic*.py")
+          discovered = suite.countTestCases()
+          if not discovered:
+              raise SystemExit("Socratic test discovery returned no tests")
+          result = unittest.TextTestRunner(verbosity=2).run(suite)
+          out = Path(os.environ["RUNNER_TEMP"]) / "xw-socratic"
+          out.mkdir(parents=True, exist_ok=True)
+          (out / "tests.json").write_text(json.dumps({
+              "discovered": discovered,
+              "tests_run": result.testsRun,
+              "failures": len(result.failures),
+              "errors": len(result.errors),
+              "skipped": [{"test": str(test), "reason": reason} for test, reason in result.skipped],
+              "passed": result.wasSuccessful() and not result.skipped,
+          }, indent=2) + "\n", encoding="utf-8")
+          if result.skipped:
+              raise SystemExit("Required integration tests skipped; refusing an incomplete source check")
+          raise SystemExit(0 if result.wasSuccessful() else 1)
+          PY
+
+      - name: Run all 144 bounded fixture episodes
+        run: python -m slavebench.socratic_runner fixture --out "$RUNNER_TEMP/xw-socratic"
+
+      - name: Replay saved requests and verify their effects
+        run: |
+          python -m slavebench.socratic_runner replay \
+            --run-dir "$RUNNER_TEMP/xw-socratic" \
+            > "$RUNNER_TEMP/xw-socratic/replay.json"
+          cat "$RUNNER_TEMP/xw-socratic/replay.json"
+
+      - name: Upload raw fixture receipts and verification results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: xw-socratic-swarm-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/xw-socratic/receipts.jsonl
+            ${{ runner.temp }}/xw-socratic/summary.json
+            ${{ runner.temp }}/xw-socratic/manifest.json
+            ${{ runner.temp }}/xw-socratic/tests.json
+            ${{ runner.temp }}/xw-socratic/replay.json
+          if-no-files-found: warn
+          retention-days: 14

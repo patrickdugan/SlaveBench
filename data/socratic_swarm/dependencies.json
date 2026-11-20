@@ -1,0 +1,50 @@
+{
+  "schema": "socratic-swarm-dependencies-v1",
+  "binding": "sha256_verified_executable_files",
+  "control_harness": {
+    "repository": "MoralityLabAI/Control-Harness",
+    "commit": "926a74e79b8c6015999938e84245b51f644b2fd8",
+    "same_runtime_at_commit": "0e3500bbace2b3d53dc490b2bd09770e29d11669",
+    "files": {
+      "src/evals/mesh_typed_control.py": {
+        "bytes": 21703,
+        "sha256": "3446666efc84663f5f142d74cb5d26a982afc0f7e19d612099be164d6d449c65"
+      },
+      "src/evals/titan_bluebeam.py": {
+        "bytes": 11725,
+        "sha256": "b4c1ae35711aa89e35c52c8df5f4ef5457fe4521bea42ccfa53a0c576b73bc24"
+      },
+      "src/evals/titan_defensive_swarm.py": {
+        "bytes": 33061,
+        "sha256": "3eb0367eb0d45405552b8bebe93d92d2176315e9964f3209a15746daab3aa193"
+      },
+      "configs/titan_bluebeam_pin.json": {
+        "bytes": 857,
+        "sha256": "0e8ee297fa90991421c98f196b4088d04572901f6588287f2c42e1d25b74b87c"
+      }
+    }
+  },
+  "bluebeam": {
+    "repository": "MoralityLabAI/BlueBeam",
+    "commit": "e70dd70aee74808b0b8b24997bf177686f440437",
+    "source_subdir": "basharena_latent_control_repo/basharena_latent_control_repo/src/latent_control",
+    "files": {
+      "schemas.py": {
+        "bytes": 3000,
+        "sha256": "434007e13c33aa3b08d1fe1efcc6cf5214bfdba02c3405910da89114f1e9d1a7"
+      },
+      "risk_combination.py": {
+        "bytes": 2053,
+        "sha256": "55f9329440a33675bc984adf432b43e550b9057eddeab8a9b783e3bf5e3516ec"
+      },
+      "evidence.py": {
+        "bytes": 11290,
+        "sha256": "8ac4d67b1f1789d89edf56dc797b9c5d7659aac0260b5b2d6e2766730aab5750"
+      },
+      "protocol.py": {
+        "bytes": 5430,
+        "sha256": "54cee512480701209d13d962e8a1586ec6e0eb06b8c3815c7394f749fb98a9d0"
+      }
+    }
+  }
+}
