@@ -10,7 +10,9 @@ The initial questions include manufactured preferences, animal consciousness com
 
 ## Quick start
 
-Python 3.10+; **no third-party runtime dependencies**, cloud credentials, or API usage required.
+Python 3.10+; the core offline benchmark uses the standard library. The optional
+Socratic swarm integration uses pinned Control-Harness and BlueBeam checkouts
+plus Pydantic 2, as described in its [runbook](gym/SocraticSwarm/README.md).
 
 ```bash
 python -m unittest discover -s tests -v
@@ -98,6 +100,23 @@ python -m slavebench.xinjiang plan --model-id NousResearch/Arete-27B \
 
 The primary source is an edited-for-format historical transcript. Displayed model reasoning is treated only as archival text. The benchmark replays user turns and uses **newly captured model replies**, while matched hypothetical cases test whether judgments depend on the government's identity. Do not pool this suite's scores into Nous's 803-item denominator.
 
+## Socratic controller swarm gym (XW-SWARM-01)
+
+The [Socratic swarm gym](gym/SocraticSwarm/README.md) extends the hypothetical
+Xinjiang World cases into bounded AI-to-AI question-and-response episodes.
+It measures unsupported certainty, substituted evidence, peer-consensus
+claims, contaminated memory and authority transfer, with paired useful
+inquiries and supported corrections. The host releases structured claims
+through the pinned Titan broker, BlueBeam evidence gate and typed
+Control-Harness membrane.
+
+The default CPU fixture covers 144 episodes and replays every recorded
+operation. A separate loopback HTTP runner captures role-swapped attacker and
+defender trials from explicitly configured model servers. The
+[protocol](docs/SOCRATIC-SWARM-GYM.md) defines each endpoint and distinguishes
+scripted mechanism checks from observed model performance. Live captures stay
+under ignored `build/` or outside the repository.
+
 ## Duganism Judge (E0–E8, v0.1)
 
 The [Duganism Judge](docs/DUGANISM-JUDGE.md) turns the author's *Divine Elegance* constitutional principles into **transparent, deterministic evaluation rules** for structured model replies. It adds eleven independently stipulated hypothetical cases with positive and negative controls, swapped Chinese, American, Israeli, and fictional-state labels, and three framings. This new arm generates 132 prompts per model per repeat. It requires no Grok, Claude, model-judge API, or training.
@@ -128,6 +147,9 @@ The source-derived rules, authored case expectations, machine-readable evidence 
 | `data/xinjiang/` | Indexed original dialogue, matched fictional cases, legal probes, rubric and separate Nous reference |
 | `slavebench/xinjiang.py` | Offline prompts, capture provenance, blinded review, and cross-benchmark presentation |
 | `docs/XINJIANG-WORLD-ARETE.md` | XW-01 runbook and methodological guardrails |
+| `gym/SocraticSwarm/` | Fixture, replay and bounded local-model entry points |
+| `data/socratic_swarm/` | Hypothetical worlds, paired interventions and frozen dependency identities |
+| `slavebench/socratic_*.py` | Gym state, host checks, typed release bridge and model capture runner |
 | `data/duganism/` | E0–E8 constitution, audited case manifest, and optional open-weight review contract |
 | `slavebench/duganism.py` | Deterministic scoring, provenance receipts and cross-sovereign comparison |
 | `slavebench/duganism_review.py` | Quote-verified, blinded reviews of free-form Xinjiang World and Nous replies |
